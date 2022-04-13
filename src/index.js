@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ThemeProvider } from '@mui/material';
+import theme from './styles/theme';
 
 import {
   QueryClientProvider,
@@ -13,13 +15,15 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 
 const queryClient = new QueryClient();
 
-ReactDOM.render(
-  <QueryClientProvider client={queryClient}>
-    <React.StrictMode>
-      <App />
-      <ReactQueryDevtools initialIsOpen={false} />
-    </React.StrictMode>
-  </QueryClientProvider>,
+ReactDOM.render( 
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <App />
+        <ReactQueryDevtools initialIsOpen={false} />
+      </ThemeProvider>
+    </QueryClientProvider>
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
